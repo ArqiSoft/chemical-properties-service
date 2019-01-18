@@ -4,7 +4,7 @@ services:
     chemical-properties-service:
         restart: always
         container_name: chemical-properties-service
-        image: docker.your-company.com/sds/chemical-properties-service:latest
+        image: leanda/chemical-properties:latest
         build:
             context: .
         environment:
