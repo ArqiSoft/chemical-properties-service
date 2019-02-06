@@ -1,0 +1,9 @@
+/Users/olegkuibar/Projects/GitHub/ArqiSoft-Leanda/chemical-properties-service/tests/Sds.ChemicalProperties.Tests/Sds.ChemicalProperties.Domain/bin/Debug/netstandard2.0/Sds.ChemicalProperties.Domain.deps.json
+/Users/olegkuibar/Projects/GitHub/ArqiSoft-Leanda/chemical-properties-service/tests/Sds.ChemicalProperties.Tests/Sds.ChemicalProperties.Domain/bin/Debug/netstandard2.0/Sds.ChemicalProperties.Domain.dll
+/Users/olegkuibar/Projects/GitHub/ArqiSoft-Leanda/chemical-properties-service/tests/Sds.ChemicalProperties.Tests/Sds.ChemicalProperties.Domain/bin/Debug/netstandard2.0/Sds.ChemicalProperties.Domain.pdb
+/Users/olegkuibar/Projects/GitHub/ArqiSoft-Leanda/chemical-properties-service/tests/Sds.ChemicalProperties.Tests/Sds.ChemicalProperties.Domain/obj/Debug/netstandard2.0/Sds.ChemicalProperties.Domain.csprojAssemblyReference.cache
+/Users/olegkuibar/Projects/GitHub/ArqiSoft-Leanda/chemical-properties-service/tests/Sds.ChemicalProperties.Tests/Sds.ChemicalProperties.Domain/obj/Debug/netstandard2.0/Sds.ChemicalProperties.Domain.csproj.CoreCompileInputs.cache
+/Users/olegkuibar/Projects/GitHub/ArqiSoft-Leanda/chemical-properties-service/tests/Sds.ChemicalProperties.Tests/Sds.ChemicalProperties.Domain/obj/Debug/netstandard2.0/Sds.ChemicalProperties.Domain.AssemblyInfoInputs.cache
+/Users/olegkuibar/Projects/GitHub/ArqiSoft-Leanda/chemical-properties-service/tests/Sds.ChemicalProperties.Tests/Sds.ChemicalProperties.Domain/obj/Debug/netstandard2.0/Sds.ChemicalProperties.Domain.AssemblyInfo.cs
+/Users/olegkuibar/Projects/GitHub/ArqiSoft-Leanda/chemical-properties-service/tests/Sds.ChemicalProperties.Tests/Sds.ChemicalProperties.Domain/obj/Debug/netstandard2.0/Sds.ChemicalProperties.Domain.dll
+/Users/olegkuibar/Projects/GitHub/ArqiSoft-Leanda/chemical-properties-service/tests/Sds.ChemicalProperties.Tests/Sds.ChemicalProperties.Domain/obj/Debug/netstandard2.0/Sds.ChemicalProperties.Domain.pdb

@@ -1,0 +1,14 @@
+{
+  "ProjectFilePath": "/Users/olegkuibar/Projects/GitHub/ArqiSoft-Leanda/chemical-properties-service/tests/Sds.ChemicalProperties.Tests/Sds.ChemicalProperties.Domain/Sds.ChemicalProperties.Domain.csproj",
+  "TargetFramework": "netstandard2.0",
+  "TagHelpers": [],
+  "Configuration": {
+    "ConfigurationName": "UnsupportedRazor",
+    "LanguageVersion": "1.0",
+    "Extensions": [
+      {
+        "ExtensionName": "UnsupportedRazorExtension"
+      }
+    ]
+  }
+}

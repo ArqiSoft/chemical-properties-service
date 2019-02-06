@@ -1,0 +1,86 @@
+﻿version: '3.4'
+
+services:
+  rabbitmq:
+    image: leanda/rabbitmq
+    hostname: "rabbitmq-leanda"
+    environment:
+      - RABBITMQ_DEFAULT_VHOST=leanda
+    ports:
+      - "8282:15672"
+      - "5672:5672"
+    networks:
+      - leanda-net
+
+  mongo:
+    image: mongo:3.6
+    ports:
+      - "27017:27017"
+    networks:
+      - leanda-net
+
+  imaging:
+    restart: always
+    container_name: imaging-service
+    image: leanda/imaging:${TAG_VERSION-latest}
+    entrypoint: /bin/bash
+    environment:
+      - OSDR_LOG_FOLDER=/logs
+      - OSDR_TEMP_FILES_FOLDER=/temp
+      - OSDR_RABBIT_MQ=rabbitmq://guest:guest@rabbitmq:5672/leanda
+      - OSDR_MONGO_DB=mongodb://mongo:27017/osdr_dev
+      - QUEUE_PREFETCH_SIZE=9
+      - EXECUTOR_THREAD_COUNT=3
+    command: ./wait-for-it.sh rabbitmq:5672 -t 30 -- java -Djava.awt.headless=true -Xmx256m -XX:NativeMemoryTracking=summary -jar sds-imaging-service.jar
+    volumes:
+      - ${OSDR_LOG_FOLDER}:/logs
+      - ${OSDR_TEMP_FILES_FOLDER}:/temp
+    networks:
+      - leanda-net
+    depends_on:
+      - rabbitmq
+      - mongo
+
+  chemical-properties:
+      restart: always
+      container_name: chemical-properties
+      image: leanda/chemical-properties:${TAG_VERSION-latest}
+      entrypoint: /bin/bash
+      environment:
+      - TZ=EST
+      - OSDR_LOG_FOLDER=/logs
+      - OSDR_TEMP_FILES_FOLDER=/temp
+      - OSDR_RABBIT_MQ=rabbitmq://guest:guest@rabbitmq:5672/osdr_dev
+      - OSDR_MONGO_DB=mongodb://mongo:27017/osdr_dev
+      - QUEUE_PREFETCH_SIZE=9
+      - EXECUTOR_THREAD_COUNT=3
+      command: ./wait-for-it.sh rabbitmq:5672 -t 30 -- ./wait-for-it.sh mongo:27017 -t 30 -- java -jar sds-chemical-properties-service.jar
+      volumes:
+      - ${OSDR_LOG_FOLDER}:/logs
+      - ${OSDR_TEMP_FILES_FOLDER}:/temp
+      ports:
+      - 8986:8086
+      networks:
+      - leanda-net
+      depends_on:
+      - rabbitmq
+      - mongo
+    
+  # tests:
+  #   container_name: imaging-tests
+  #   image: leanda/imaging-tests:${TAG_VERSION-latest}
+  #   entrypoint: /bin/bash
+  #   environment:
+  #     - OSDR_LOG_FOLDER=/logs
+  #     - OSDR_LOG_LEVEL=${OSDR_LOG_LEVEL}
+  #     - OSDR_GRID_FS=mongodb://mongo:27017/osdr_dev
+  #     - OSDR_RABBIT_MQ=rabbitmq://guest:guest@rabbitmq:5672/leanda
+  #   command: ./wait-for-it.sh rabbitmq:5672 -t 30 -- ./wait-for-it.sh mongo:27017 -t 30 -- dotnet vstest ./Sds.Imaging.Tests.dll /logger:"trx;LogFileName=imaging-tests-results-${BUILD_NUMBER}.xml" /ResultsDirectory:/results
+  #   volumes:
+  #     - ${OSDR_LOG_FOLDER}:/logs
+  #     - /results:/results
+  #   networks:
+  #     - leanda-net
+
+networks:
+  leanda-net:
