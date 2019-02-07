@@ -25,11 +25,6 @@ namespace Sds.ChemicalProperties.Tests {
         public IBusControl BusControl { get { return _serviceProvider.GetService<IBusControl> (); } }
 
         private List<ExceptionInfo> Faults = new List<ExceptionInfo> ();
-
-        public ChemicalPropertiesTestHarness (ReceivedMessageList received) {
-            this.Received = received;
-
-        }
         public ReceivedMessageList Received { get; } = new ReceivedMessageList (TimeSpan.FromSeconds (10));
 
         public ChemicalPropertiesTestHarness () {

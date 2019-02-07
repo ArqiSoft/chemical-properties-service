@@ -1,11 +1,9 @@
-﻿using Sds.ChemicalProperties.Domain.Models;
+﻿using System;
 using MassTransit;
-using System;
+using Sds.ChemicalProperties.Domain.Models;
 
-namespace Sds.ChemicalProperties.Domain.Events
-{
-    public interface ChemicalPropertiesCalculated : CorrelatedBy<Guid>
-    {
+namespace Sds.ChemicalProperties.Domain.Events {
+    public interface ChemicalPropertiesCalculated : CorrelatedBy<Guid> {
         Guid Id { get; }
         Guid UserId { get; }
         DateTimeOffset TimeStamp { get; }
