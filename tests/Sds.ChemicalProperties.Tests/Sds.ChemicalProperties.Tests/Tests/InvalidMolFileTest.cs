@@ -2,6 +2,7 @@ using System;
 using System.Linq;
 using System.Threading.Tasks;
 using FluentAssertions;
+using FluentAssertions.Extensions;
 using Xunit;
 using Xunit.Abstractions;
 
@@ -16,18 +17,18 @@ namespace Sds.ChemicalProperties.Tests {
         public InvalidMolFileTestFixture (ChemicalPropertiesTestHarness harness) {
             Bucket = UserId.ToString ();
             BlobId = harness.UploadResource (Bucket, "empty.rxn").Result;
-            harness.CalculateChemicalProperties (Id, BlobId, Bucket, UserId, CorrelationId).Wait ();
+            harness.CalculateChemicalProperties (Id, BlobId, Bucket, UserId, CorrelationId).Wait (20000);
         }
     }
 
     [Collection ("ChemicalProperties Test Harness")]
-    public class InvalidMolFileTest : ChemicalPropertiesTest, IClassFixture<MolFileTestFixture> {
+    public class InvalidMolFileTest : ChemicalPropertiesTest, IClassFixture<InvalidMolFileTestFixture> {
         private Guid CorrelationId;
         private string Bucket;
         private Guid UserId;
         private Guid Id;
 
-        public InvalidMolFileTest(ChemicalPropertiesTestHarness harness, ITestOutputHelper output, MolFileTestFixture initFixture) : base(harness, output)
+        public InvalidMolFileTest(ChemicalPropertiesTestHarness harness, ITestOutputHelper output, InvalidMolFileTestFixture initFixture) : base(harness, output)
         {
             Id = initFixture.Id;
             CorrelationId = initFixture.CorrelationId;
@@ -40,8 +41,10 @@ namespace Sds.ChemicalProperties.Tests {
         {
            var evn = Harness.GetChemicalPropertiesCalculationFailedEvent(Id);
            evn.Should().NotBeNull();
-           evn.CalculationException.Should().NotBeNull();
+           evn.UserId.Should().Be(UserId);
            evn.CorrelationId.Should().Be(CorrelationId);
+           evn.TimeStamp.Should().BeBefore(DateTime.Now).And.BeLessThan(2000.Milliseconds());
+           evn.CalculationException.Should().NotBeNull();
         }
     }
 }
