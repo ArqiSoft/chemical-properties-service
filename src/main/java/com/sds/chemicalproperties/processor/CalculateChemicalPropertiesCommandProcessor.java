@@ -154,7 +154,6 @@ public class CalculateChemicalPropertiesCommandProcessor implements MessageProce
     private void publishSuccessEvent(CalculateChemicalProperties message, CalculatedProperties result) {
         ChemicalPropertiesCalculated event = new ChemicalPropertiesCalculated();
         event.setId(message.getId());
-        //event.setId(UUID.randomUUID());
         event.setUserId(message.getUserId());
         event.setTimeStamp(getTimestamp());
         event.setResult(result);
