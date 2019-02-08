@@ -8,6 +8,6 @@ namespace Sds.ChemicalProperties.Domain.Events
         Guid Id { get; }
         Guid UserId { get; }
         DateTimeOffset TimeStamp { get; }
-        Exception CalculationException { get; }
+        String CalculationException { get; }
     }
 }
