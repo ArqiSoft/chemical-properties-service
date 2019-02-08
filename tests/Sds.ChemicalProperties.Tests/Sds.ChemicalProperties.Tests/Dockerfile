@@ -2,11 +2,11 @@ FROM microsoft/dotnet:2.1-runtime AS base
 WORKDIR /app
 
 FROM microsoft/dotnet:2.1-sdk AS build
-WORKDIR /src
-COPY Sds.ChemicalProperties.Tests/Sds.ChemicalProperties.Tests.csproj Sds.ChemicalProperties.Tests/
+WORKDIR /tests
+COPY Sds.ChemicalProperties.Tests.csproj Sds.ChemicalProperties.Tests/
 RUN dotnet restore Sds.ChemicalProperties.Tests/Sds.ChemicalProperties.Tests.csproj
 COPY . .
-WORKDIR /src/Sds.ChemicalProperties.Tests
+WORKDIR /tests/Sds.ChemicalProperties.Tests
 RUN dotnet build Sds.ChemicalProperties.Tests.csproj -c Release -o /app
 
 FROM build AS publish
