@@ -9,6 +9,9 @@ x64/
 !Source/Osdr.Mvc/3rd/
 [Bb]in/
 [Oo]bj/
+../[Bb]in/
+../[Oo]bj/
+../obj
 [Dd]ist/
 [Xx]unit/
 [Xx]unit-results.xml
