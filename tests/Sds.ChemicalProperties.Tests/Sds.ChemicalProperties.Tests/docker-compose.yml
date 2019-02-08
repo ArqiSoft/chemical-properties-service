@@ -46,7 +46,7 @@ services:
       image: leanda/chemical-properties-tests:${TAG_VERSION-latest}
       entrypoint: /bin/bash
       environment:
-        - OSDR_LOG_FOLDER=/logs
+        - OSDR_LOG_FOLDER=${OSDR_LOG_FOLDER}
         - OSDR_LOG_LEVEL=${OSDR_LOG_LEVEL}
         - OSDR_GRID_FS=mongodb://mongo:27017/osdr_dev
         - OSDR_RABBIT_MQ=rabbitmq://guest:guest@rabbitmq:5672/leanda
@@ -56,6 +56,8 @@ services:
         - /tmp/tests/chemical-properties/results:/tmp/tests/chemical-properties/results
       networks:
         - leanda-net
+      depends_on:
+        - chemical-properties
 
 networks:
   leanda-net:
