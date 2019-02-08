@@ -2,6 +2,7 @@ using System;
 using System.Linq;
 using System.Threading.Tasks;
 using FluentAssertions;
+using Sds.Domain;
 using Xunit;
 using Xunit.Abstractions;
 
@@ -37,8 +38,16 @@ namespace Sds.ChemicalProperties.Tests {
         [Fact]
         public void ChemicalPropertiesCalculation_ValidMolFile_ShouldCalculateProperties () {
             var evn = Harness.GetChemicalPropertiesCalculatedEvent (Id);
+            evn.UserId.Should().Be(UserId);
+            evn.CorrelationId.Should().Be(CorrelationId);
+            evn.Result.Issues.Count().Should ().BeGreaterOrEqualTo (0);
             evn.Result.Properties.Should ().NotBeEmpty ();
-            evn.Result.Issues.Should ().NotBeEmpty ();
+            evn.Result.Properties.ToList().ForEach((Property prop) => {
+                string[] nameList = {"SMILES", "MOLECULAR_FORMULA", "MOLECULAR_WEIGHT", "MONOISOTOPIC_MASS", "MOST_ABUNDANT_MASS", "InChI", "InChIKey"};
+                string[] valueList = {"OC1=CC=C(C=C1)C=O", "C7 H6 O2", "122.12134218215942", "122.03678011894226", "122.03678011894226", "InChI=1S/C7H6O2/c8-5-6-1-3-7(9)4-2-6/h1-5,9H", "RGHHSNMVTDWUBI-UHFFFAOYSA-N"};
+                prop.Name.Should().BeOneOf(nameList);
+                prop.Value.ToString().Should().BeOneOf(valueList);
+            });
         }
     }
 }
