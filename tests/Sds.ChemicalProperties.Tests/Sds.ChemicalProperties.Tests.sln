@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sds.ChemicalProperties.Tests", "Sds.ChemicalProperties.Tests\Sds.ChemicalProperties.Tests.csproj", "{749D6813-DDCA-4D5D-9517-F77702E68566}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sds.ChemicalProperties.Domain", "Sds.ChemicalProperties.Domain\Sds.ChemicalProperties.Domain.csproj", "{26051A7F-4EF9-4024-8FD1-CEC31D817055}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sds.ChemicalPropertiesTest.LoadTests", "Sds.ChemicalProperties.LoadTests\Sds.ChemicalPropertiesTest.LoadTests.csproj", "{F41F1B9E-4093-4D4D-9B11-F45B76662F51}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sds.ChemicalProperties.Domain", "Sds.ChemicalProperties.Domain\Sds.ChemicalProperties.Domain.csproj", "{5923D19E-EF2E-49E1-89FC-AF29A653DBCC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,13 +17,13 @@ Global
 		{749D6813-DDCA-4D5D-9517-F77702E68566}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{749D6813-DDCA-4D5D-9517-F77702E68566}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{749D6813-DDCA-4D5D-9517-F77702E68566}.Release|Any CPU.Build.0 = Release|Any CPU
-		{26051A7F-4EF9-4024-8FD1-CEC31D817055}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{26051A7F-4EF9-4024-8FD1-CEC31D817055}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{26051A7F-4EF9-4024-8FD1-CEC31D817055}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{26051A7F-4EF9-4024-8FD1-CEC31D817055}.Release|Any CPU.Build.0 = Release|Any CPU
 		{F41F1B9E-4093-4D4D-9B11-F45B76662F51}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{F41F1B9E-4093-4D4D-9B11-F45B76662F51}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F41F1B9E-4093-4D4D-9B11-F45B76662F51}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F41F1B9E-4093-4D4D-9B11-F45B76662F51}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5923D19E-EF2E-49E1-89FC-AF29A653DBCC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5923D19E-EF2E-49E1-89FC-AF29A653DBCC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5923D19E-EF2E-49E1-89FC-AF29A653DBCC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5923D19E-EF2E-49E1-89FC-AF29A653DBCC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
