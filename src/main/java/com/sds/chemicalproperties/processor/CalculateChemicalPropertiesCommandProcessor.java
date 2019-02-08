@@ -89,8 +89,8 @@ public class CalculateChemicalPropertiesCommandProcessor implements MessageProce
             indigo = null;
 
             LOGGER.debug("Properties calculated event has been issued.");
-        } catch (Exception ex) {
-            publishFailureEvent(message, ex);
+        } catch (Exception exception) {
+            publishFailureEvent(message, exception.getMessage());
         }
 
     }
@@ -165,10 +165,9 @@ public class CalculateChemicalPropertiesCommandProcessor implements MessageProce
         bus.publish(event);
     }
 
-    private void publishFailureEvent(CalculateChemicalProperties message, Exception exception) {
+    private void publishFailureEvent(CalculateChemicalProperties message, String exception) {
         ChemicalPropertiesCalculationFailed event = new ChemicalPropertiesCalculationFailed();
         event.setId(message.getId());
-        //event.setId(UUID.randomUUID());
         event.setUserId(message.getUserId());
         event.setTimeStamp(getTimestamp());
         event.setCorrelationId(message.getCorrelationId());

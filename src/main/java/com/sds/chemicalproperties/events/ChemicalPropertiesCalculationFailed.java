@@ -9,14 +9,14 @@ public class ChemicalPropertiesCalculationFailed extends AbstractContract {
     protected UUID id;
     protected UUID userId;
     protected String timeStamp;
-    protected Exception calculationException;
+    protected String calculationException;
 
     public ChemicalPropertiesCalculationFailed() {
         namespace = "Sds.ChemicalProperties.Domain.Events";
         contractName = ChemicalPropertiesCalculationFailed.class.getSimpleName();
     }
 
-    public ChemicalPropertiesCalculationFailed(UUID id, UUID userId, String timeStamp, Exception calculationException) {
+    public ChemicalPropertiesCalculationFailed(UUID id, UUID userId, String timeStamp, String calculationException) {
         this.id = id;
         this.userId = userId;
         this.timeStamp = timeStamp;
@@ -42,7 +42,7 @@ public class ChemicalPropertiesCalculationFailed extends AbstractContract {
     }
 
     @JsonProperty("CalculationException")
-    public Exception getCalculationException() {
+    public String getCalculationException() {
         return calculationException;
     }
 
@@ -58,7 +58,7 @@ public class ChemicalPropertiesCalculationFailed extends AbstractContract {
         this.timeStamp = timeStamp;
     }
 
-    public void setCalculationException(Exception calculationException) {
+    public void setCalculationException(String calculationException) {
         this.calculationException = calculationException;
     }
 
