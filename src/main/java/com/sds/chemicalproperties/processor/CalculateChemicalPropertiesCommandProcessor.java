@@ -90,7 +90,7 @@ public class CalculateChemicalPropertiesCommandProcessor implements MessageProce
 
             LOGGER.debug("Properties calculated event has been issued.");
         } catch (Exception ex) {
-            publishFailureEvent(message, "Error message");
+            publishFailureEvent(message, ex);
         }
 
     }
@@ -153,7 +153,8 @@ public class CalculateChemicalPropertiesCommandProcessor implements MessageProce
 
     private void publishSuccessEvent(CalculateChemicalProperties message, CalculatedProperties result) {
         ChemicalPropertiesCalculated event = new ChemicalPropertiesCalculated();
-        event.setId(UUID.randomUUID());
+        event.setId(message.getId());
+        //event.setId(UUID.randomUUID());
         event.setUserId(message.getUserId());
         event.setTimeStamp(getTimestamp());
         event.setResult(result);
@@ -164,12 +165,14 @@ public class CalculateChemicalPropertiesCommandProcessor implements MessageProce
         bus.publish(event);
     }
 
-    private void publishFailureEvent(CalculateChemicalProperties message, String exception) {
+    private void publishFailureEvent(CalculateChemicalProperties message, Exception exception) {
         ChemicalPropertiesCalculationFailed event = new ChemicalPropertiesCalculationFailed();
-        event.setId(UUID.randomUUID());
+        event.setId(message.getId());
+        //event.setId(UUID.randomUUID());
         event.setUserId(message.getUserId());
         event.setTimeStamp(getTimestamp());
         event.setCorrelationId(message.getCorrelationId());
+        event.setCalculationException(exception);
 
         LOGGER.debug("Publishing event {}", event);
 
