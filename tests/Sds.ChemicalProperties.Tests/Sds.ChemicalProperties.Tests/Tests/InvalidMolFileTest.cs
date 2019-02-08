@@ -17,7 +17,7 @@ namespace Sds.ChemicalProperties.Tests {
         public InvalidMolFileTestFixture (ChemicalPropertiesTestHarness harness) {
             Bucket = UserId.ToString ();
             BlobId = harness.UploadResource (Bucket, "empty.rxn").Result;
-            harness.CalculateChemicalProperties (Id, BlobId, Bucket, UserId, CorrelationId).Wait (20000);
+            harness.CalculateChemicalProperties (Id, BlobId, Bucket, UserId, CorrelationId).Wait ();
         }
     }
 
