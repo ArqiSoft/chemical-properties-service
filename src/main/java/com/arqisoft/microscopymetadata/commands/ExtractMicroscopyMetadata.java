@@ -1,29 +1,29 @@
-package com.sds.chemicalproperties.commands;
+package com.arqisoft.microscopymetadata.commands;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import sds.messaging.contracts.AbstractContract;
 
 import java.util.UUID;
 
-public class CalculateChemicalProperties extends AbstractContract {
+public class ExtractMicroscopyMetadata extends AbstractContract {
     protected UUID id;
     protected String bucket;
     protected UUID blobId;
     protected UUID userId;
 
-    public CalculateChemicalProperties() {
-        namespace = "Sds.ChemicalProperties.Domain.Commands";
-        contractName = CalculateChemicalProperties.class.getSimpleName();
+    public ExtractMicroscopyMetadata() {
+        namespace = "Leanda.Microscopy.Metadata.Domain.Commands";
+        contractName = ExtractMicroscopyMetadata.class.getSimpleName();
     }
 
-    public CalculateChemicalProperties(UUID id, String bucket, UUID blobId, UUID userId) {
+    public ExtractMicroscopyMetadata(UUID id, String bucket, UUID blobId, UUID userId) {
         this.id = id;
         this.bucket = bucket;
         this.blobId = blobId;
         this.userId = userId;
 
-        namespace = "Sds.ChemicalProperties.Domain.Commands";
-        contractName = CalculateChemicalProperties.class.getSimpleName();
+        namespace = "Leanda.Microscopy.Metadata.Domain.Commands";
+        contractName = ExtractMicroscopyMetadata.class.getSimpleName();
     }
 
     @JsonProperty("Id")
@@ -48,7 +48,7 @@ public class CalculateChemicalProperties extends AbstractContract {
 
     @Override
     public String toString() {
-        return "CalculateChemicalProperties{" +
+        return "ExtractMicroscopyMetadata{" +
                 "id=" + id +
                 ", bucket='" + bucket + '\'' +
                 ", blobId=" + blobId +

@@ -1,11 +1,11 @@
-package com.sds.chemicalproperties.config;
+package com.arqisoft.microscopymetadata.config;
 
 import java.io.IOException;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-import com.sds.chemicalproperties.commands.CalculateChemicalProperties;
+import com.arqisoft.microscopymetadata.commands.ExtractMicroscopyMetadata;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +16,7 @@ import com.npspot.jtransitlight.JTransitLightException;
 import com.npspot.jtransitlight.consumer.ReceiverBusControl;
 import com.npspot.jtransitlight.consumer.setting.ConsumerSettings;
 import com.npspot.jtransitlight.publisher.IBusControl;
-import com.sds.chemicalproperties.processor.CalculateChemicalPropertiesCommandMessageCallback;
+import com.arqisoft.microscopymetadata.processor.ExtractMicroscopyMetadataCommandMessageCallback;
 import sds.messaging.callback.MessageProcessor;
 
 @Component
@@ -27,16 +27,16 @@ public class MessageProcessorConfiguration {
     @Autowired
     public MessageProcessorConfiguration(IBusControl busControl, 
             ReceiverBusControl receiver, 
-            MessageProcessor<CalculateChemicalProperties> processor,
-            BlockingQueue<CalculateChemicalProperties> queue,
+            MessageProcessor<ExtractMicroscopyMetadata> processor,
+            BlockingQueue<ExtractMicroscopyMetadata> queue,
             // TODO: Define queue name in application.properties
             @Value("${queueName}") String queueName,
             @Value("${EXECUTOR_THREAD_COUNT:5}") Integer threadCount) 
                     throws JTransitLightException, IOException, InterruptedException {
         
-        receiver.subscribe(new CalculateChemicalProperties().getQueueName(), queueName,
+        receiver.subscribe(new ExtractMicroscopyMetadata().getQueueName(), queueName,
                 ConsumerSettings.newBuilder().withDurable(true).build(), 
-                new CalculateChemicalPropertiesCommandMessageCallback(CalculateChemicalProperties.class, queue));
+                new ExtractMicroscopyMetadataCommandMessageCallback(ExtractMicroscopyMetadata.class, queue));
         
         LOGGER.debug("EXECUTOR_THREAD_COUNT is set to {}", threadCount);
         
@@ -47,7 +47,7 @@ public class MessageProcessorConfiguration {
             
             while (true) {
                 // wait for message
-                final CalculateChemicalProperties message = queue.take();
+                final ExtractMicroscopyMetadata message = queue.take();
                 
                 // submit to processing pool
                 threadPool.submit(() -> processor.process(message));

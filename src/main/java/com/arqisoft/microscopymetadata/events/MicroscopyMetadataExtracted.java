@@ -1,32 +1,32 @@
-package com.sds.chemicalproperties.events;
+package com.arqisoft.microscopymetadata.events;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.sds.chemicalproperties.model.CalculatedProperties;
+import java.util.Map;
 import sds.messaging.contracts.AbstractContract;
 
 import java.util.UUID;
 
-public class ChemicalPropertiesCalculated extends AbstractContract {
+public class MicroscopyMetadataExtracted extends AbstractContract {
 
     protected UUID id;
     protected UUID userId;
     protected String timeStamp;
-    protected CalculatedProperties result;
+    protected Map<String, Object> metadata;
 
-    public ChemicalPropertiesCalculated() {
-        namespace = "Sds.ChemicalProperties.Domain.Events";
-        contractName = ChemicalPropertiesCalculated.class.getSimpleName();
+    public MicroscopyMetadataExtracted() {
+        namespace = "Leanda.Microscopy.Metadata.Domain.Events";
+        contractName = MicroscopyMetadataExtracted.class.getSimpleName();
 
     }
 
-    public ChemicalPropertiesCalculated(UUID id, UUID userId, String timeStamp, CalculatedProperties result) {
+    public MicroscopyMetadataExtracted(UUID id, UUID userId, String timeStamp, Map<String, Object> metadata) {
         this.id = id;
         this.userId = userId;
         this.timeStamp = timeStamp;
-        this.result = result;
+        this.metadata = metadata;
 
-        namespace = "Sds.ChemicalProperties.Domain.Events";
-        contractName = ChemicalPropertiesCalculated.class.getSimpleName();
+        namespace = "Leanda.Microscopy.Metadata.Domain.Events";
+        contractName = MicroscopyMetadataExtracted.class.getSimpleName();
     }
 
     @JsonProperty("Id")
@@ -44,9 +44,9 @@ public class ChemicalPropertiesCalculated extends AbstractContract {
         return timeStamp;
     }
 
-    @JsonProperty("Result")
-    public CalculatedProperties getResult() {
-        return result;
+    @JsonProperty("Metadata")
+    public Map<String, Object> getResult() {
+        return metadata;
     }
 
     public void setId(UUID id) {
@@ -61,17 +61,17 @@ public class ChemicalPropertiesCalculated extends AbstractContract {
         this.timeStamp = timeStamp;
     }
 
-    public void setResult(CalculatedProperties result) {
-        this.result = result;
+    public void setMetadata(Map<String, Object> metadata) {
+        this.metadata = metadata;
     }
 
     @Override
     public String toString() {
-        return "ChemicalPropertiesCalculated{"
+        return "MicroscopyMetadataExtracted{"
                 + "id=" + id
                 + ", userId=" + userId
                 + ", timeStamp='" + timeStamp + '\''
-                + ", result=" + result
+                + ", metadata=" + metadata
                 + '}';
     }
 }

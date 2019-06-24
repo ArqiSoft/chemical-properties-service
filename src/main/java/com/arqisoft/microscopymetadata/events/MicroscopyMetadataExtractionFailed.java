@@ -1,29 +1,29 @@
-package com.sds.chemicalproperties.events;
+package com.arqisoft.microscopymetadata.events;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import sds.messaging.contracts.AbstractContract;
 
 import java.util.UUID;
 
-public class ChemicalPropertiesCalculationFailed extends AbstractContract {
+public class MicroscopyMetadataExtractionFailed extends AbstractContract {
     protected UUID id;
     protected UUID userId;
     protected String timeStamp;
-    protected String calculationException;
+    protected String message;
 
-    public ChemicalPropertiesCalculationFailed() {
-        namespace = "Sds.ChemicalProperties.Domain.Events";
-        contractName = ChemicalPropertiesCalculationFailed.class.getSimpleName();
+    public MicroscopyMetadataExtractionFailed() {
+        namespace = "Leanda.Microscopy.Metadata.Domain.Events";
+        contractName = MicroscopyMetadataExtractionFailed.class.getSimpleName();
     }
 
-    public ChemicalPropertiesCalculationFailed(UUID id, UUID userId, String timeStamp, String calculationException) {
+    public MicroscopyMetadataExtractionFailed(UUID id, UUID userId, String timeStamp, String message) {
         this.id = id;
         this.userId = userId;
         this.timeStamp = timeStamp;
-        this.calculationException = calculationException;
+        this.message = message;
 
-        namespace = "Sds.ChemicalProperties.Domain.Events";
-        contractName = ChemicalPropertiesCalculationFailed.class.getSimpleName();
+        namespace = "Leanda.Microscopy.Metadata.Domain.Events";
+        contractName = MicroscopyMetadataExtractionFailed.class.getSimpleName();
     }
 
     @JsonProperty("Id")
@@ -41,9 +41,9 @@ public class ChemicalPropertiesCalculationFailed extends AbstractContract {
         return timeStamp;
     }
 
-    @JsonProperty("CalculationException")
-    public String getCalculationException() {
-        return calculationException;
+    @JsonProperty("Message")
+    public String getMessage() {
+        return message;
     }
 
     public void setId(UUID id) {
@@ -59,16 +59,16 @@ public class ChemicalPropertiesCalculationFailed extends AbstractContract {
     }
 
     public void setCalculationException(String calculationException) {
-        this.calculationException = calculationException;
+        this.message = calculationException;
     }
 
     @Override
     public String toString() {
-        return "ChemicalPropertiesCalculationFailed{" +
+        return "MicroscopyMetadataExtractionFailed{" +
                 "id=" + id +
                 ", userId=" + userId +
                 ", timeStamp='" + timeStamp + '\'' +
-                ", calculationException=" + calculationException +
+                ", message=" + message +
                 '}';
     }
 }
