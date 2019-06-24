@@ -1,4 +1,4 @@
-package com.sds.chemicalproperties;
+package com.sds.microscopymetadata;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
