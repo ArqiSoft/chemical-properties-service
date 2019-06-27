@@ -86,30 +86,48 @@ public class ExtractMicroscopyMetadataCommandProcessor implements MessageProcess
         result.put("Experimenter", "John Doe");
         result.put("ExperimenterGroup", "John Doe Ltd.");
         
-        Map<String, Object> projectExperiment = new HashMap<String, Object>();
-        projectExperiment.put("Name", "Moonshine");
-        projectExperiment.put("Date", getTimestamp());
-        result.put("ProjectExperiment", projectExperiment);
+        result.put("Name", "Moonshine");
+        result.put("Date", getTimestamp());
+        
+//        
+//        Map<String, Object> projectExperiment = new HashMap<String, Object>();
+//        projectExperiment.put("Name", "Moonshine");
+//        projectExperiment.put("Date", getTimestamp());
+//        result.put("ProjectExperiment", projectExperiment);
         
         result.put("Folder (path)", "C:\\Windows");
+       
+        result.put("Instrument Info -> Device Name", "Alcohol mashine");
+        result.put("Detector", "What is Detector?");
+        result.put("Objective ->", "Hmm... ");
+        result.put("Magnification", "Common, what is this?");
+        result.put("Filters", "Are you kiddin me?");
         
-        Map<String, Object> instrumentInfo = new HashMap<String, Object>();
-        instrumentInfo.put("Instrument Info -> Device Name", "Alcohol mashine");
-        instrumentInfo.put("Detector", "What is Detector?");
-        instrumentInfo.put("Objective ->", "Hmm... ");
-        instrumentInfo.put("Magnification", "Common, what is this?");
-        instrumentInfo.put("Filters", "Are you kiddin me?");
-        result.put("Instrument Info", instrumentInfo);
         
-        Map<String, Object> imageProperties = new HashMap<String, Object>();
-        imageProperties.put("X-dimension", 15);
-        imageProperties.put("Y-dimension", 85);
-        imageProperties.put("Z-dimension", 168);
-        imageProperties.put("number of time points", 1586);
-        imageProperties.put("number of channels", 852);
-        imageProperties.put("number of scan areas/platesNotes", 3);
-        result.put("Image properties", imageProperties);
-
+//        Map<String, Object> instrumentInfo = new HashMap<String, Object>();
+//        instrumentInfo.put("Device Name", "Alcohol mashine");
+//        instrumentInfo.put("Detector", "What is Detector?");
+//        instrumentInfo.put("Objective", "Hmm... ");
+//        instrumentInfo.put("Magnification", "Common, what is this?");
+//        instrumentInfo.put("Filters", "Are you kiddin me?");
+//        result.put("Instrument Info", instrumentInfo);
+        
+//        Map<String, Object> imageProperties = new HashMap<String, Object>();
+//        imageProperties.put("X-dimension", 15);
+//        imageProperties.put("Y-dimension", 85);
+//        imageProperties.put("Z-dimension", 168);
+//        imageProperties.put("number of time points", 1586);
+//        imageProperties.put("number of channels", 852);
+//        imageProperties.put("number of scan areas/platesNotes", 3);
+//        result.put("Image properties", imageProperties);  
+        
+        result.put("X-dimension", 15);
+        result.put("Y-dimension", 85);
+        result.put("Z-dimension", 168);
+        result.put("number of time points", 1586);
+        result.put("number of channels", 852);
+        result.put("number of scan areas/platesNotes", 3);
+        
         return result;
     }
 

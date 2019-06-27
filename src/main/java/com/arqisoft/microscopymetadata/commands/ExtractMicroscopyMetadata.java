@@ -46,6 +46,22 @@ public class ExtractMicroscopyMetadata extends AbstractContract {
         return userId;
     }
 
+    public void setId(UUID id) {
+        this.id = id;
+    }
+
+    public void setBucket(String bucket) {
+        this.bucket = bucket;
+    }
+
+    public void setBlobId(UUID blobId) {
+        this.blobId = blobId;
+    }
+
+    public void setUserId(UUID userId) {
+        this.userId = userId;
+    }
+
     @Override
     public String toString() {
         return "ExtractMicroscopyMetadata{" +
