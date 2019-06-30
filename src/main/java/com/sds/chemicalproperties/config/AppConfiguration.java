@@ -1,11 +1,11 @@
-package com.arqisoft.microscopymetadata.config;
+package com.sds.chemicalproperties.config;
 
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
 
-import com.arqisoft.microscopymetadata.commands.ExtractMicroscopyMetadata;
+import com.sds.chemicalproperties.commands.CalculateChemicalProperties;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -24,8 +24,12 @@ import com.npspot.jtransitlight.publisher.IBusControl;
 import com.npspot.jtransitlight.transport.JTransitLightTransportException;
 import com.sds.storage.BlobStorage;
 import com.sds.storage.gridfs.GridFSBlobStorage;
+// import com.sds.validation.JsonSchemaValidator;
+
 
 @Configuration
+@EnableAutoConfiguration
+@ComponentScan("com.sds")
 public class AppConfiguration  {
     private static final Logger LOGGER = LoggerFactory.getLogger(AppConfiguration.class);
 
@@ -69,9 +73,9 @@ public class AppConfiguration  {
     }
     
     @Bean
-    BlockingQueue<ExtractMicroscopyMetadata> getProcessingQueue(
+    BlockingQueue<CalculateChemicalProperties> getProcessingQueue(
             @Value("${QUEUE_PREFETCH_SIZE:15}") Integer prefetchSize) {
         LOGGER.debug("QUEUE_PREFETCH_SIZE is set to {}", prefetchSize);
-        return new ArrayBlockingQueue<ExtractMicroscopyMetadata>(prefetchSize);
+        return new ArrayBlockingQueue<CalculateChemicalProperties>(prefetchSize);
     }
 }

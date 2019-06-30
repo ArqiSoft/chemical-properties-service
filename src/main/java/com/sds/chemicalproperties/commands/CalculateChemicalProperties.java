@@ -1,29 +1,29 @@
-package com.arqisoft.microscopymetadata.commands;
+package com.sds.chemicalproperties.commands;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import sds.messaging.contracts.AbstractContract;
 
 import java.util.UUID;
 
-public class ExtractMicroscopyMetadata extends AbstractContract {
+public class CalculateChemicalProperties extends AbstractContract {
     protected UUID id;
     protected String bucket;
     protected UUID blobId;
     protected UUID userId;
 
-    public ExtractMicroscopyMetadata() {
-        namespace = "Leanda.Microscopy.Metadata.Domain.Commands";
-        contractName = ExtractMicroscopyMetadata.class.getSimpleName();
+    public CalculateChemicalProperties() {
+        namespace = "Sds.ChemicalProperties.Domain.Commands";
+        contractName = CalculateChemicalProperties.class.getSimpleName();
     }
 
-    public ExtractMicroscopyMetadata(UUID id, String bucket, UUID blobId, UUID userId) {
+    public CalculateChemicalProperties(UUID id, String bucket, UUID blobId, UUID userId) {
         this.id = id;
         this.bucket = bucket;
         this.blobId = blobId;
         this.userId = userId;
 
-        namespace = "Leanda.Microscopy.Metadata.Domain.Commands";
-        contractName = ExtractMicroscopyMetadata.class.getSimpleName();
+        namespace = "Sds.ChemicalProperties.Domain.Commands";
+        contractName = CalculateChemicalProperties.class.getSimpleName();
     }
 
     @JsonProperty("Id")
@@ -46,25 +46,9 @@ public class ExtractMicroscopyMetadata extends AbstractContract {
         return userId;
     }
 
-    public void setId(UUID id) {
-        this.id = id;
-    }
-
-    public void setBucket(String bucket) {
-        this.bucket = bucket;
-    }
-
-    public void setBlobId(UUID blobId) {
-        this.blobId = blobId;
-    }
-
-    public void setUserId(UUID userId) {
-        this.userId = userId;
-    }
-
     @Override
     public String toString() {
-        return "ExtractMicroscopyMetadata{" +
+        return "CalculateChemicalProperties{" +
                 "id=" + id +
                 ", bucket='" + bucket + '\'' +
                 ", blobId=" + blobId +

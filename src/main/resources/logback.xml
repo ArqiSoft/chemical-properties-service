@@ -27,7 +27,7 @@
     <appender-ref ref="fileAppender"/>
     <appender-ref ref="STDOUT"/>
 </logger>
-<logger name="com.leanda" level="debug" additivity="false">
+<logger name="com.sds" level="debug" additivity="false">
     <appender-ref ref="fileAppender"/>
     <appender-ref ref="STDOUT"/>
 </logger>
