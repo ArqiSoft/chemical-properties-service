@@ -1,6 +1,6 @@
 # Chemical Properties Service
 
-[![Build Status](https://travis-ci.org/ArqiSoft/chemical-properties-service.svg?branch=master)](https://travis-ci.org/ArqiSoft/chemical-properties-service)
+[![Build Status](https://travis-ci.com/ArqiSoft/chemical-properties-service.svg?branch=master)](https://travis-ci.com/ArqiSoft/chemical-properties-service)
 
 ## System Requirements
 
